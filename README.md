@@ -1,4 +1,4 @@
-##Data table visualization and export without metrics for Kibana 6.x
+## Data table visualization and export without metrics for Kibana 6.x
 
 > A kibana plugin that will allow us to build a custom table without metrics from the data stored in the ES indexes. It will show all the stored indexes in the ES instance, then all the present columns in the index to build the custom table. Then we will be able to export the table we had built as CSV
 
