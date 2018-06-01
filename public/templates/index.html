@@ -1,0 +1,51 @@
+<div class="container" ng-controller="sdvController" ng-init="loadIndexes()" >
+  <div class="row">
+    <div class="col-12-sm">
+      <div class="well">
+        <h2 class="kuiLocalTitle" >Select an index</h2>
+      </br>
+      <button class="kuiButton kuiButton--basic" ng-repeat="indice in listIndices" ng-click="loadData(indice.index,$index)" ng-class="{true:'kuiButton kuiButton--primary'}[indexActif == $index]">
+        {{indice.index}}
+      </button>
+    </br>
+    <hr class="guideBreak">
+    <div ng-if="choiceIn">
+      <h2 class="kuiLocalTitle">Select columns</h2>
+    </br>
+    <button class="kuiButton kuiButton--basic" ng-repeat="col in columns" ng-click="colPicker(col,$index)" ng-class="{true:'kuiButton kuiButton--primary'}[boutonActif[col] == $index]">
+      {{col}}
+    </button>
+    <div>
+    </div>
+    <hr class="guideBreak">
+    <div ng-if="choiceCol > 0">
+      <h2 class="kuiLocalTitle" ng-hide="total<=20">Number of hits to show(by default:20), maximum of hits : {{total}} </h2>
+      <h2 class="kuiLocalTitle" ng-hide="total>=20">Total : {{total}}  </h2>
+    </br>
+    <input ng-hide="total<=20" type="range" min="20" max="{{total}}" step="40" data-ng-model="requestSize" ng-change="sizeChanger(requestSize)">
+    <div ng-hide="total<=20">{{requestSize}}</div>
+  </br>
+  <hr class="guideBreak">
+
+  <table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped">
+    <th ng-repeat="colp in colsDisp"> 
+      <a class="kuiLink" ng-click="colUnpick(colp,$index)">{{colp}}</a>
+    </th>
+    <tr ng-repeat="row in $data track by $index">
+      <td ng-repeat="colp2 in colsDisp" >{{row[colp2]}}</td>
+
+    </tr>
+  </table>
+  <button class="btn" title="Prepare CSV" ng-click="exportCSV()">
+    <i class="glyphicon glyphicon-list-alt"></i> Prepare CSV
+  </button>
+  <button ng-hide="export!=true" class="btn" title="Export Table" ng-csv="tableCsv" csv-header="colExport" filename="{{indexCourant}}.csv">
+    <i class="glyphicon glyphicon-download-alt"></i> Export
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+
+

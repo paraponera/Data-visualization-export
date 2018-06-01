@@ -1,0 +1,41 @@
+{
+  "name": "simpledatavisualization",
+  "version": "1.0.0",
+  "description": "A kibana plugin that will allow us to build a custom table without metrics from the data stored in the ES indexes. It will show all the stored indexes in the ES instance, then all the present columns in the index to build the custom table. Then we will be able to export the table we had built as CSV",
+  "main": "index.js",
+  "author": "Omar Azzabi",
+  "kibana": {
+    "version": "kibana",
+    "templateVersion": "8.0.0"
+  },
+  "scripts": {
+    "lint": "eslint **/*.js",
+    "start": "plugin-helpers start",
+    "test:server": "plugin-helpers test:server",
+    "test:browser": "plugin-helpers test:browser",
+    "build": "plugin-helpers build",
+    "postinstall": "plugin-helpers postinstall",
+    "gather-info": "node gather-info.js"
+  },
+  "devDependencies": {
+    "@elastic/eslint-config-kibana": "^0.14.0",
+    "@elastic/eslint-import-resolver-kibana": "^0.9.0",
+    "@elastic/plugin-helpers": "^8.0.1",
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-plugin-mocha": "^4.9.0",
+    "eslint-plugin-prefer-object-spread": "^1.2.1",
+    "eslint-plugin-react": "^7.0.1",
+    "expect.js": "^0.3.1"
+  },
+  "dependencies": {
+    "elasticsearch": "^15.0.0",
+    "elasticsearch-browser": "^15.0.0",
+    "ng-csv": "^0.3.6",
+    "ng-table": "^3.0.1",
+    "ng-table-to-csv": "^0.3.3"
+  }
+}
