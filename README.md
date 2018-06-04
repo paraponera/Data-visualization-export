@@ -11,6 +11,7 @@
 
 ## Installation
 
+* Clone or download this repo, then inside it run the command `npm run build` and mention in the console the version needed.Make sure you have npm 6.0.0 installed. Then inside your Kibana repository under the bin folder run the command `kibana-plugin install file:D:\my-new-plugin\build\my_new_plugin-0.0.0.zip`; the link must point to the generated ZIP under the build directory of the plugin. 
 
 ## development
 
