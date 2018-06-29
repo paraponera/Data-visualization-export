@@ -2,12 +2,14 @@
 
 > A kibana plugin that will allow us to build a custom table without metrics from the data stored in the ES indexes. It will show all the stored indexes in the ES instance, then all the present columns in the index to build the custom table. Then we will be able to export the table we had built as CSV
 
-## Features
+## Features (Version 2.0)
 
 * Show all indexes stored in the ES(ElasticSearch) instance
 * Show all columns present in the selectionned index
 * Build own custom datatable from chosen index and columns with dynamic number of hits
 * Export custom builded datatable as CSV
+* Update interface
+* Optionally add percentile metric on numeric fields
 
 ## Installation
 
