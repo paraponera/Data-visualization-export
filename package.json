@@ -32,10 +32,14 @@
     "expect.js": "^0.3.1"
   },
   "dependencies": {
+    "@angular/animations": "^6.0.4",
+    "angular-animate": "^1.7.2",
+    "angular-material": "^1.1.9",
     "elasticsearch": "^15.0.0",
     "elasticsearch-browser": "^15.0.0",
     "ng-csv": "^0.3.6",
     "ng-table": "^3.0.1",
-    "ng-table-to-csv": "^0.3.3"
+    "ng-table-to-csv": "^0.3.3",
+    "sweetalert2": "^7.22.2"
   }
 }

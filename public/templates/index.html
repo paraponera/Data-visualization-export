@@ -19,21 +19,49 @@
     </div>
     <hr class="guideBreak">
     <div ng-if="choiceCol > 0">
-      <h2 class="kuiLocalTitle" ng-hide="total<=20">Number of hits to show(by default:20), maximum of hits : {{total}} </h2>
+      <h2 class="kuiLocalTitle" ng-hide="total<=20">Number of hits to Render (by default:20), maximum of hits : {{total}} </h2>
       <h2 class="kuiLocalTitle" ng-hide="total>=20">Total : {{total}}  </h2>
     </br>
     <input ng-hide="total<=20" type="range" min="20" max="{{total}}" step="40" data-ng-model="requestSize" ng-change="sizeChanger(requestSize)">
     <div ng-hide="total<=20">{{requestSize}}</div>
   </br>
   <hr class="guideBreak">
+    <div ng-if="choiceCol > 0">
+      <h2 class="kuiLocalTitle">Aggregations settings</h2>
+    </br>
+      <form name="metricForm">
+        </br>
+        <label for="singleSelect"> Select a metric: </label></br></br>
+        <select ng-model="metric"
+                style='width:300px'
+                ng-required="true">
+          <option value="" label="Select a metric"></option>
+          <option value="0" label="Percentile"></option>
+        </select>
+        </br></br>
+        <label for="singleSelect"> Select a field: </label></br></br>
+        <select ng-model="field"
+                style='width:300px'
+                ng-required="true">
+          <option value="" label="Select a field"></option>
+            <option value="{{option}}"  ng-repeat="option in colsDispMet" >{{option}}</option>
+        </select>
+        </br></br>
+        <button type="submit" class="kuiButton kuiButton--primary" ng-click="metricForm.$valid && choixMetric(metric,field)">
+          Validate
+        </button>
+      </form>
+    </br>
+    
+  </br>
+  <hr class="guideBreak">
 
   <table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped">
     <th ng-repeat="colp in colsDisp"> 
-      <a class="kuiLink" ng-click="colUnpick(colp,$index)">{{colp}}</a>
+      <a class="kuiLink" ng-click="colUnpick(colp,$index)" ng-mouseover="show = 1" ng-mouseleave="show = 0">{{colp}}  <i ng-show="show == 1" class="fa fa-trash" title="Delete"></i></a>
     </th>
-    <tr ng-repeat="row in $data track by $index">
-      <td ng-repeat="colp2 in colsDisp" >{{row[colp2]}}</td>
-
+    <tr ng-repeat="(key,row) in $data track by $index">
+      <td ng-repeat="colp2 in colsDisp" >{{row[colp2]}} <div ng-show="row['percentile_'+colp2]!=null"> {{row['percentile_'+colp2]}} % </div> </td>
     </tr>
   </table>
   <button class="btn" title="Prepare CSV" ng-click="exportCSV()">
